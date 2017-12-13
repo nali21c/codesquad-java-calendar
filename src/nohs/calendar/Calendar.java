@@ -11,27 +11,27 @@ public class Calendar {
 
 	public static void main(String[] args) {
 
-		System.out.println("반복 횟수를 입력하세요");
-		Scanner repeat = new Scanner(System.in);
-		int time = repeat.nextInt();
-		
+		// 숫자를 입력받아 해당하는 달의 최대 월수는 출력하는 프로그램
 
-		System.out.println("월을 입력하세요");
+		String PROMPT = "Cal> ";
+		Scanner scanner = new Scanner(System.in);
 		Calendar cal = new Calendar();
 
-		int[] month = new int[time - 1];
+		int month = 1;
 
-		for (int i = 0; i <= month.length; i++) {
-			Scanner scanner = new Scanner(System.in);
-			month[i] = scanner.nextInt();
-		
+		while (true) {
+			System.out.println("달을 입력하세요");
+			System.out.print(PROMPT);
+			month = scanner.nextInt();
+			if (month == -1) {
+				break;
+			}
+			if (month > 12) {
+				continue;
+			}
+			System.out.printf("%d월은 %d일까지 있습니다\n", month, cal.getMaxDaysOfMonth(month));
 		}
-		 
-		 for(int j=0; j <= month.length; j++) {
-		 System.out.printf("%d달의 마지막 날은 %d입니다\n", month[j],
-		 cal.getMaxDaysOfMonth(month[j]));
-		 }
-		
+		System.out.println("BYE~");
+		scanner.close();
 	}
-
 }
